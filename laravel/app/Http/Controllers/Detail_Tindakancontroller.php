@@ -2,88 +2,60 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Detail_Tindakan;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use App\Models\Detail_Tindakan;
+use App\Models\Kunjungan;
+use App\Models\Tindakan;
 
 class Detail_TindakanController extends Controller
 {
     public function index()
     {
-        $data = Detail_Tindakan::with(['kunjungan', 'tindakan'])->get();
-        return response()->json($data, 200);
+        $details = Detail_Tindakan::with(['kunjungan.pasien', 'tindakan'])->get();
+        $kunjungans = Kunjungan::with('pasien')->get();
+        $tindakans = Tindakan::all();
+
+        return view('detail_tindakan', [
+            'details' => $details,
+            'kunjungans' => $kunjungans,
+            'tindakans' => $tindakans,
+        ]);
     }
 
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        $validated = $request->validate([
             'kunjungan_id' => 'required|exists:kunjungans,id',
-            'tindakan_id'  => 'required|exists:tindakans,id',
-            'keterangan'   => 'required|string',
-            'subtotal'     => 'required|numeric|min:0',
+            'tindakan_id' => 'required|exists:tindakans,id',
+            'keterangan' => 'required|string|max:255',
+            'subtotal' => 'required|numeric|min:0',
         ]);
 
-        if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Validasi gagal',
-                'errors'  => $validator->errors()
-            ], 422);
-        }
+        Detail_Tindakan::create($validated);
 
-        $detailTindakan = Detail_Tindakan::create($validator->validated());
-
-        return response()->json([
-            'success' => true,
-            'data'    => $detailTindakan,
-            'message' => 'Detail tindakan berhasil ditambahkan'
-        ], 201);
-    }
-
-    public function show($id)
-    {
-        $detailTindakan = Detail_Tindakan::with(['kunjungan', 'tindakan'])->find($id);
-
-        if (!$detailTindakan) {
-            return response()->json(['message' => 'Detail tindakan tidak ditemukan'], 404);
-        }
-
-        return response()->json($detailTindakan);
+        return redirect()->back()->with('success', 'Detail tindakan berhasil ditambahkan.');
     }
 
     public function update(Request $request, $id)
     {
-        $detailTindakan = Detail_Tindakan::find($id);
-
-        if (!$detailTindakan) {
-            return response()->json(['message' => 'Detail tindakan tidak ditemukan'], 404);
-        }
-
         $validated = $request->validate([
             'kunjungan_id' => 'required|exists:kunjungans,id',
-            'tindakan_id'  => 'required|exists:tindakans,id',
-            'keterangan'   => 'required|string',
-            'subtotal'     => 'required|numeric|min:0',
+            'tindakan_id' => 'required|exists:tindakans,id',
+            'keterangan' => 'required|string|max:255',
+            'subtotal' => 'required|numeric|min:0',
         ]);
 
-        $detailTindakan->update($validated);
+        $detail = Detail_Tindakan::findOrFail($id);
+        $detail->update($validated);
 
-        return response()->json([
-            'message' => 'Detail tindakan berhasil diperbarui!',
-            'data'    => $detailTindakan
-        ]);
+        return redirect()->back()->with('success', 'Detail tindakan berhasil diperbarui.');
     }
 
     public function destroy($id)
     {
-        $detailTindakan = Detail_Tindakan::find($id);
+        $detail = Detail_Tindakan::findOrFail($id);
+        $detail->delete();
 
-        if (!$detailTindakan) {
-            return response()->json(['message' => 'Detail tindakan tidak ditemukan'], 404);
-        }
-
-        $detailTindakan->delete();
-
-        return response()->json(['message' => 'Detail tindakan berhasil dihapus!']);
+        return redirect()->back()->with('success', 'Detail tindakan berhasil dihapus.');
     }
 }

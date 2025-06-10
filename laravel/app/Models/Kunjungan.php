@@ -41,4 +41,10 @@ class Kunjungan extends Model
     {
         return $this->hasMany(detail_tindakan::class, 'foreign_key', 'local_key');
     }
+
+    public function index()
+    {
+        $kunjungans = Kunjungan::all();
+        return view('kunjungan.index', compact('kunjungans'));
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -22,9 +23,9 @@ class Detail_Tindakan extends Model
      * Relasi ke model Kunjungan
      */
     public function kunjungan(): BelongsTo
-    {
-        return $this->belongsTo(Kunjungan::class);
-    }
+{
+    return $this->belongsTo(Kunjungan::class);
+}
 
     /**
      * Relasi ke model Tindakan

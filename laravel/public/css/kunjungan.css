@@ -3,7 +3,7 @@ body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #1b1d3c;
-    color: #ffffff;
+    color: #ffffff
 }
 
 /* Header wrapper */
@@ -17,7 +17,7 @@ header {
 }
 
 /* Logo */
-.logo img {
+.logo-center img {
     width: 120px;
     height: auto;
     display: block;
@@ -25,7 +25,7 @@ header {
 }
 
 /* Menu Navigasi */
-nav ul {
+.menu-nav {
     list-style: none;
     display: flex;
     gap: 25px;
@@ -34,7 +34,7 @@ nav ul {
     justify-content: center;
 }
 
-nav ul li a {
+.menu-nav li a {
     text-decoration: none;
     color: #ccc;
     font-weight: bold;
@@ -43,12 +43,13 @@ nav ul li a {
     transition: all 0.3s ease;
 }
 
-nav ul li a:hover,
-nav ul li a:focus {
+.menu-nav li a:hover,
+.menu-nav li a:focus {
     background-color: #343667;
     color: #ffffff;
     box-shadow: 0 0 10px #7a7dfb;
 }
+
 
 /* Judul */
 h1 {
@@ -69,44 +70,32 @@ h1 {
 }
 
 /* Table Style */
-.tindakan-table {
+.kunjungan-table {
     width: 100%;
     border-collapse: collapse;
     color: #fff;
 }
 
-.tindakan-table th,
-.tindakan-table td {
+.kunjungan-table th,
+.kunjungan-table td {
     padding: 15px 20px;
     text-align: left;
 }
 
-.tindakan-table th {
+.kunjungan-table th {
     background-color: #2e305e;
     color: #bcbcff;
     font-size: 14px;
     letter-spacing: 1px;
 }
 
-.tindakan-table tr {
-    background-color: #2c2e57;
+.kunjungan-table tr {
+    background-color: #474ca7;
     transition: background-color 0.3s ease;
 }
 
-.tindakan-table tr:hover {
-    background-color: #3a3d70;
-}
-
-/* Status Badge */
-.status-badge {
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 15px;
-    font-size: 12px;
-    font-weight: bold;
-    background-color: #4dc0b5;
-    color: white;
-    margin-right: 10px;
+.kunjungan-table tr:hover {
+    background-color: #4a8faa;
 }
 
 /* Tombol Hapus */

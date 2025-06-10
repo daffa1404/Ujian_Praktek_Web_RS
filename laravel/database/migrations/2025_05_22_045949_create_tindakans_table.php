@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tindakans', function (Blueprint $table) {
-            $table->id(); // Wajib: BIGINT UNSIGNED PRIMARY
+            $table->id();
             $table->string('nama_tindakan');
-            $table->decimal('harga', 8, 2);
+            $table->decimal('harga', 12, 2); // Menyimpan sebagai decimal
             $table->timestamps();
         });
 

@@ -12,15 +12,20 @@
     <!-- Header -->
     <header>
         <div class="container nav-container">
-            <a href="#" class="logo"><img src="{{ asset('image/kivotoshospital_ba-style@nulla.top.png') }}" width="150" height="150" /></a>
+            <div class="logo-text-wrapper">
+                <a href="#" class="logo">
+                    <img src="{{ asset('img/liveal_iconpng.png') }}" style="width: 120px; height: auto;"
+                        alt="Logo Liveal" />
+                </a>
+                <span class="tagline">𝑹𝒖𝒎𝒂𝒉 𝑺𝒂𝒌𝒊𝒕 𝑻𝒆𝒓𝒃𝒂𝒊𝒌</span>
+            </div>
             <nav>
-                <ul>
-                    <li><a href="{{ url('/') }}">home</a></li>
-                    <li><a href="{{ url('/pasien') }}">pasien</a></li>
+                <ul class="rounded-menu">
+                    <li><a href="{{ url('/') }}">Home</a></li>
+                    <li><a href="{{ url('/pasien') }}">Pasien</a></li>
                     <li><a href="{{ url('/dokter') }}">Dokter</a></li>
                     <li><a href="{{ url('/tindakan') }}">Tindakan</a></li>
-                    <li><a href="{{ url('/kunjungan') }}">kunjungan</a></li>
-                    <li><a href="/detail kunjungan.html">detail kunjungan</a></li>
+                    <li><a href="{{ url('/kunjungan') }}">Kunjungan</a></li>
                 </ul>
             </nav>
         </div>
@@ -31,7 +36,6 @@
         <div class="hero-content">
             <h1>Pelayanan Kesehatan Terbaik untuk Keluarga Anda</h1>
             <p>Bersama kami, kesehatan Anda prioritas utama</p>
-            <a href="{{ url('/tambah') }}" class="btn-primary">Reservasi Sekarang</a>
             <a href="{{ url('/dokter') }}" class="btn-outline">Lihat Jadwal Dokter</a>
         </div>
     </section>
@@ -62,16 +66,11 @@
     <!-- Footer -->
     <footer>
         <div class="contact-info">
-            <span>📞 (021) 123-4567</span>
-            <span>✉ info@rssehat.com</span>
-            <span>📍 Jl. Sehat No.123, Jakarta</span>
+            <span>📞 (021) 124-8876</span>
+            <span>✉ info@liveal.com</span>
+            <span>📍 Jl. Sakit No.666, Indonesia</span>
         </div>
-        <div class="social-icons">
-            <a href="#" aria-label="Instagram">📸</a>
-            <a href="#" aria-label="Facebook">📘</a>
-            <a href="#" aria-label="Twitter">🐦</a>
-        </div>
-        <small>© 2025 RS Sehat Sentosa. All rights reserved.</small>
+        <small>© 2025 Rumah Sakit Liveal, All rights reserved.</small>
     </footer>
 </body>
 

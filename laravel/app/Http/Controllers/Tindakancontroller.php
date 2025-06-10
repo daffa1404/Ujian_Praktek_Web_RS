@@ -7,25 +7,32 @@ use Illuminate\Http\Request;
 
 class TindakanController extends Controller
 {
-    public function index()
+    public function api()
     {
-        $data = Tindakan::all();
-        return response()->json($data, 200);
+        return response()->json(Tindakan::all());
     }
+
+    public function index()
+{
+    $tindakans = Tindakan::all();
+    return view('tindakan', compact('tindakans')); // Remove .index
+}
 
     public function store(Request $request)
     {
         $validated = $request->validate([
             'nama_tindakan' => 'required|string|max:255',
-            'harga'         => 'required|numeric|min:0',
+            'harga' => 'required|numeric|min:0',
+            'kode_icd' => 'required|string|unique:tindakans,kode_icd',
         ]);
 
-        $tindakan = Tindakan::create($validated);
+        Tindakan::create([
+            'nama_tindakan' => $request->nama_tindakan,
+            'harga' => $request->harga,
+            'kode_icd' => $request->kode_icd,
+        ]);
 
-        return response()->json([
-            'message' => 'Tindakan berhasil dibuat',
-            'data' => $tindakan
-        ], 201);
+        return redirect()->route('tindakan.index')->with('success', 'Tindakan berhasil ditambahkan');
     }
 
     public function show($id)
@@ -49,7 +56,8 @@ class TindakanController extends Controller
 
         $validated = $request->validate([
             'nama_tindakan' => 'required|string|max:255',
-            'harga'         => 'required|numeric|min:0',
+            'harga' => 'required|numeric|min:0',
+            'kode_icd' => 'required|string|unique:tindakans,kode_icd,'.$id,
         ]);
 
         $tindakan->update($validated);

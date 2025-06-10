@@ -2,13 +2,13 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #1b1d3c;
+    background-color: #40718c;
     color: #ffffff;
 }
 
 /* Header wrapper */
 header {
-    background-color: #14152b;
+    background-color: #213749;
     padding: 20px 0 30px;
     display: flex;
     flex-direction: column;
@@ -18,10 +18,8 @@ header {
 
 /* Logo */
 .logo img {
-    width: 120px;
+    width: 150px;
     height: auto;
-    display: block;
-    margin: 0 auto;
 }
 
 /* Menu Navigasi */
@@ -44,8 +42,9 @@ nav ul li a {
 }
 
 nav ul li a:hover,
-nav ul li a:focus {
-    background-color: #343667;
+nav ul li a:focus,
+nav ul li a.active {
+    background-color: #549eb5;
     color: #ffffff;
     box-shadow: 0 0 10px #7a7dfb;
 }
@@ -58,58 +57,47 @@ h1 {
     color: #e0e0ff;
 }
 
-/* Container Table */
+/* Container */
 .container {
     max-width: 1100px;
     margin: 40px auto;
     padding: 20px;
-    background-color: #23244d;
+    background-color: #47a1a6;
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(122, 125, 251, 0.2);
 }
 
-/* Table Style */
-.tindakan-table {
+/* Table */
+.detail-table {
     width: 100%;
     border-collapse: collapse;
     color: #fff;
 }
 
-.tindakan-table th,
-.tindakan-table td {
+.detail-table th,
+.detail-table td {
     padding: 15px 20px;
     text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.tindakan-table th {
+.detail-table th {
     background-color: #2e305e;
     color: #bcbcff;
     font-size: 14px;
     letter-spacing: 1px;
 }
 
-.tindakan-table tr {
-    background-color: #2c2e57;
+.detail-table tr {
+    background-color: #474ca7;
     transition: background-color 0.3s ease;
 }
 
-.tindakan-table tr:hover {
-    background-color: #3a3d70;
+.detail-table tr:hover {
+    background-color: #4a8faa;
 }
 
-/* Status Badge */
-.status-badge {
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 15px;
-    font-size: 12px;
-    font-weight: bold;
-    background-color: #4dc0b5;
-    color: white;
-    margin-right: 10px;
-}
-
-/* Tombol Hapus */
+/* Button Styles */
 .delete-btn {
     background-color: #f2557f;
     color: #fff;
@@ -125,7 +113,6 @@ h1 {
     background-color: #e0436e;
 }
 
-/* Tombol Edit */
 .edit-btn {
     background-color: #7a7dfb;
     color: #fff;
@@ -143,7 +130,6 @@ h1 {
     box-shadow: 0 0 10px rgba(122, 125, 251, 0.5);
 }
 
-/* Tombol Tambah */
 .tambah-btn {
     background-color: #4dc0b5;
     color: white;
@@ -159,14 +145,12 @@ h1 {
     background-color: #3ca89c;
 }
 
-/* Overlay Styles */
+/* Overlay */
 .overlay {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 1000;
     justify-content: center;
@@ -174,20 +158,18 @@ h1 {
 }
 
 .overlay-content {
-    background-color: #23244d;
+    background-color: #234a4d;
     padding: 30px;
     border-radius: 15px;
     width: 500px;
     max-width: 90%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     position: relative;
-    color: white;
 }
 
 .close-btn {
     position: absolute;
-    top: 15px;
-    right: 20px;
+    top: 15px; right: 20px;
     font-size: 28px;
     color: #ccc;
     cursor: pointer;
@@ -198,7 +180,7 @@ h1 {
     color: #f44336;
 }
 
-/* Form Styles */
+/* Form Style */
 .form-group {
     margin-bottom: 20px;
 }
@@ -211,14 +193,20 @@ h1 {
 }
 
 .form-group input,
+.form-group select,
 .form-group textarea {
     width: 100%;
     padding: 10px;
     border-radius: 8px;
-    border: 1px solid #3a3d70;
-    background-color: #2c2e57;
+    border: 1px solid #3a6b70;
+    background-color: #2c4d57;
     color: white;
     font-family: inherit;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
 }
 
 .submit-btn {
@@ -236,4 +224,14 @@ h1 {
 
 .submit-btn:hover {
     background-color: #3ca89c;
+}
+
+/* Footer */
+footer {
+    background-color: #0a324d;
+    color: white;
+    padding: 40px 0;
+    margin-top: 100px;
+    text-align: center;
+    font-size: 14px;
 }

@@ -11,5 +11,14 @@ class Tindakan extends Model
     protected $fillable = [
         'nama_tindakan',
         'harga',
+        'kode_icd',
     ];
+
+
+    public function index()
+{
+    $tindakans = Tindakan::all();
+    return view('tindakan.index', compact('tindakans'));
+}
+
 }
